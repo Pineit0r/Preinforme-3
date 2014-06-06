@@ -5,23 +5,38 @@
 \maketitle
 \newpage
 \section{Resumen}
+	En el desarrollo de este informe previo se describen los métodos de resolución para cada problema, los conceptos teóricos necesarios para comprender cada uno de éstos y se explica el diseño de los módulos de prueba que se pretenden utilizar en esta experiencia.
 \section{Objetivos}
 	\begin{itemize}
-		\item Objetivo
-		\item Objetivo
+		\item Lograr simular la modulación de señales digitales utilizando transmisión de información en amplitud de portadora (ASK y OOK) y transmisión de información en fase de portadora (BPSK).
+		\item Observar los espectros pertenecientes a cada una de estas modulaciones y calcular sus respectivos anchos de banda basándose en tres distintos criterios.
+		\item Simular la etapa de demodulación sincrónica para cada una de las señales simuladas anteriormente.
+		\item Observar y comprender el efecto de introducir un desfase a la señal portadora con la cual se demodula.
+		\item Diseñar correctamente un circuito detector de envolvente para frecuencias de portadora dadas.
 	\end{itemize}
 \newpage
 
 \section{Descripción del Problema}
+	En esta sección se procede a identificar cada problema y comprender qué se busca aprender en cada uno.
 	\begin{enumerate}
 		\item \textbf{Problema 1}
 		
+			El principal objetivo en este problema es simular correctamente cada una de las modulaciones que se estudian en este experiencia, observando los efectos que producen al modular con señales cuadradas de frecuencia fija y ciclo de trabajo variable o con señales cuadradas pseudoaleatorias (más cercanas a una modulación digital real). Se desea graficar el espectro para cada uno de estos casos identificando diferencias y similitudes.
 		\item \textbf{Problema 2}
 		
+			En este problema se busca determinar el ancho de banda para cada una de las señales moduladas considerando tres distintos criterios:
+			\begin{itemize}
+				\item Ancho de banda de -3 [dB]
+				\item Ancho de banda del primer nulo
+				\item Ancho de banda de 98\% de potencia
+			\end{itemize}
+			
 		\item \textbf{Problema 3}
 		
+			El objetivo de este problema es simular correctamente un demodulador sincrónico junto con un filtro pasa bajos para poder recepcionar los mensajes simulados anteriormente. También se busca determinar el efecto que tiene el demodular con una portadora desfasada desde 0º a 180º.
 		\item \textbf{Problema 4}
 		
+			En este problema 
 		\item \textbf{Problema 5}
 	\end{enumerate}
 \newpage
