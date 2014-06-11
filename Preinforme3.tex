@@ -49,10 +49,10 @@
 	\begin{enumerate}
 		\item \textbf{Problema 1}
 		
-		A traves del uso del software $Matlab$ se procede a simular señales de tipos OOK y BPSK en base a caracteristicas de diseño determinadas observando sus formas de onda y obteniendo el espectro de cada una en base a ciclos de trabajo determinados. Se  analizaran y comentarán cada uno de  los resultados obtenidos.
+			A traves del uso del software $Matlab$ se procede a simular señales de tipos OOK y BPSK en base a caracteristicas de diseño determinadas observando sus formas de onda y obteniendo el espectro de cada una en base a ciclos de trabajo determinados. Se  analizaran y comentarán cada uno de  los resultados obtenidos.
 		\item \textbf{Problema 2}
 		
-		Se procede a determinar el ancho de banda de las señañes simuladas en el Problema 1 en base a criterios como: Ancho de Banda de Primer Nulo, Ancho de de banda -3dB y ancho de banda en base al 98\% de la Potencia. Se  analizaran y comentarán cada uno de  los resultados obtenidos
+			Se procede a determinar el ancho de banda de las señañes simuladas en el Problema 1 en base a criterios como: Ancho de Banda de Primer Nulo, Ancho de de banda -3dB y ancho de banda en base al 98\% de la Potencia. Se  analizaran y comentarán cada uno de  los resultados obtenidos
 		\item \textbf{Problema 3}
 		
 			Se utiliza el software MATLAB/Simulink para realizar la simulación del circuito demodulador sincrónico. En la Figura \ref{fig:model3} se ilustra el modelo a utilizar en Simulink para simular la etapa de modulación y demodulación.
@@ -66,526 +66,587 @@
 			
 		\item \textbf{Problema 4}
 		
+		En este problema busca familiarizarse con el amplificador operacional AD817, entender qué características son las que lo hacen útil para esta experiencia y diseñar las componentes que lo involucran para lograr desfasar la señal portadora.
 		\item \textbf{Problema 5}
+		
+		El objetivo de este problema es lograr diseñar correctamente el circuito detector de envolvente que se emplea para demodular en dos frecuencias de portadora distintas. Se debe especificar qué componentes se utilizan y el rango de voltajes apropiados para el circuito.
 	\end{enumerate}
 \newpage
 \newpage
 
 \section{Resultados y Contrastaciones}
-	\begin{enumerate}
-		\item \textbf{Problema 1}
-		
+	
+	\subsection{Problema 1}
 		Se procede a elaborar tablas de amplitud de componentes espectrales de señales moduladas digitalemnte mediante OOK y BPSK con los siguientes parámetros:\\
 		Para la Señal Portadora:\\
 		$Ac=1[V]$\\
 		$fc=400[Khz]$\\
 		Para la Señal Modulante:\\
 		$Am=1[V]$\\
-		$fm=5000[Hz]$\\\\
+		$fm=5000[Hz]$\\
 		Para las respectivas simulaciones, se utilizaran los siguientes códigos en $Matlab$:\\
-		\subsection{Señal OOK}
-		
-		\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK]
-		clear all; close all;
-		%OOK
-		%Caracteristicas: Debe tener un indice de modulacion igual a 1
-		Am= 1;
-		Ac= 1;
-		fm= 5e3; 
-		fc= 400e3;
-		duty=50;
-		syms t;
-		%Variables
-		wc= 2*pi*fc;
-		wm= 2*pi*fm;
-		m = (Am/Ac);
-		fs= 2*wc;
-		%Tiempo
-		Tm = (1/fm);
-		t = 0:(Tm/1000):1000*Tm;
-		%senal Modulante
-		E = m.*(square(t.*wm,duty));
-		%senal OOK
-		f1=(1+E).*cos(t.*wc);
-		%Graficos senal OOK
-		title('senal OOK')
-		subplot(2,1,1);
-		A = plot(t,f1);
-		grid on;
-		set(A,'Color','black','LineWidth',2)
-		axis ([0 2*Tm -3.5*m 3.5*m]);
-		xlabel('Tiempo[s]')
-		ylabel('Voltaje[V]')
+		\subsubsection{Señal OOK}
 
-		%Grafico senal Modulante
-		title('Senal Modulante')
-		subplot(2,1,2);
-		B = plot(t,E);
-		grid on;
-		title('Senal Modulante')
-		set(B,'Color','red','LineWidth',2)
-		set(gca)
-		axis ([0 2*Tm -1.5*m 1.5*m]);
-		xlabel('Tiempo[s]')
-		ylabel('Voltaje[V]')
-		\end{lstlisting}
-		\newpage
-		Se obtienen los siguientes Gráficos:
-		
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK]
+				clear all; close all;
+				%OOK
+				%Caracteristicas: Debe tener un indice de modulacion igual a 1
+				Am= 1;
+				Ac= 1;
+				fm= 5e3; 
+				fc= 400e3;
+				duty=50;
+				syms t;
+				%Variables
+				wc= 2*pi*fc;
+				wm= 2*pi*fm;
+				m = (Am/Ac);
+				fs= 2*wc;
+				%Tiempo
+				Tm = (1/fm);
+				t = 0:(Tm/1000):1000*Tm;
+				%senal Modulante
+				E = m.*(square(t.*wm,duty));
+				%senal OOK
+				f1=(1+E).*cos(t.*wc);
+				%Graficos senal OOK
+				title('senal OOK')
+				subplot(2,1,1);
+				A = plot(t,f1);
+				grid on;
+				set(A,'Color','black','LineWidth',2)
+				axis ([0 2*Tm -3.5*m 3.5*m]);
+				xlabel('Tiempo[s]')
+				ylabel('Voltaje[V]')
+
+				%Grafico senal Modulante
+				title('Senal Modulante')
+				subplot(2,1,2);
+				B = plot(t,E);
+				grid on;
+				title('Senal Modulante')
+				set(B,'Color','red','LineWidth',2)
+				set(gca)
+				axis ([0 2*Tm -1.5*m 1.5*m]);
+				xlabel('Tiempo[s]')
+				ylabel('Voltaje[V]')
+			\end{lstlisting}
+			\newpage
+			Se obtienen los siguientes Gráficos:
+
 			\trimagen{Senal20_OOK}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
 			{Senal25_OOK}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
 			{Senal50_OOK}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}
 			\\
 			Cabe destacar la generacion de nulos en la señal dependiendo del ciclo de trabajo de la señal Modulante. La relacion de nulos generados se plantea a traves de :
 			\begin{equation}
-			T/\tau =n
+				T/\tau =n
 			\end{equation}
 			Donde n es la posicion del Nulo.\\\\
-			
-		Luego, se implementa el siguiente código para generar los espectros:		
 	
-	\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT OOK]
-	%%
-	%FFT
-	close all
-	X = fftshift(fft(f1));
-	f = fs/2*linspace(-1,1,length(X));
-	plot(f,10*log10(abs(X)))
-      axis([-5e5 -3e5 0 60])
-      [x,y] = ginput(5)
-	title('Espectro de senal OOK')
-	xlabel('Frecuencia(Hz)')
-	ylabel('|Y(f)|')
-	\end{lstlisting}
-	
-	Se obtienen los siguientes espectros:\\
-	\trimagen{Esp_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			{Esp_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			{Esp_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}
-	\newpage
-				A traves del uso de la funcion $gidinput$ en $Matlab$ se encuentran las respectivas amplitudes y frecuencias fundamentales para cada uno de los espectros. Los valores son:
+			Luego, se implementa el siguiente código para generar los espectros:		
 
-	\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
-				\hline
-				1 & -4.0207 & 57.6316  \\
-				2 & -4.0714 & 49.7368   \\
-				3 & -3.9700 & 49.5614   \\
-				4 & -4.1221 & 48.8596   \\
-				5 & -3.9194 & 48.6842  
-			\end{tabular}
-			\caption{Valores frecuencias fundamentales OOK}
-			\label{tab:tabla1}
-		\end{table}
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT OOK]
+				%%
+				%FFT
+				close all
+				X = fftshift(fft(f1));
+				f = fs/2*linspace(-1,1,length(X));
+				plot(f,10*log10(abs(X)))
+				  axis([-5e5 -3e5 0 60])
+				  [x,y] = ginput(5)
+				title('Espectro de senal OOK')
+				xlabel('Frecuencia(Hz)')
+				ylabel('|Y(f)|')
+			\end{lstlisting}
 
-	\newpage	
-	\subsection{Señal BPSK}
-	\begin{lstlisting}[label=some-code,caption=Codigo Matlab BPSK]
-	%Experiencia 3
-		clear all; close all;
-		%BPSK
-		%Caracteristicas: Debe tener un indice de modulacion igual a 1
-		Am= 1;
-		Ac= 1;
-		fm= 5e3; 
-		fc= 400e3;
-		duty=50;
-		syms t;
-		%Variables
-		wc= 2*pi*fc;
-		wm= 2*pi*fm;
-		m = (Am/Ac);
-		fs= 2*wc;
-		%Tiempo
-		Tm = (1/fm);
-		t = [0:(Tm/1000):1000*Tm];
-		%senal Modulante
-		E = (0.5+0.5.*square(t.*wm,duty));
-		%senal ASK
-		f1=cos(t.*wc + 180.*E);
-		%Graficos senal BSK
-		title('senal BPSK')
-		subplot(2,1,1);
-		A = plot(t,f1);
-		grid on;
-		set(A,'Color','black','LineWidth',2)
-		axis ([0 2*Tm -3.5*m 3.5*m]);
-		xlabel('Tiempo[s]')
-		ylabel('Voltaje[V]')
+			Se obtienen los siguientes espectros:\\
+			\trimagen{Esp_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+					{Esp_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+					{Esp_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}
+			\newpage
+			A traves del uso de la funcion $gidinput$ en $Matlab$ se encuentran las respectivas amplitudes y frecuencias fundamentales para cada uno de los espectros. Los valores son:
 
-		%Grafico senal Modulante
-		title('Senal Modulante')
-		subplot(2,1,2);
-		B = plot(t,E);
-		grid on;
-		title('Senal Modulante')
-		set(B,'Color','red','LineWidth',2)
-		set(gca)
-		axis ([0 2*Tm -0.5*m 1.5*m]);
-		xlabel('Tiempo[s]')
-		ylabel('Voltaje[V]')
-		\end{lstlisting}
-	
-	Se obtienen los siguientes gráficos:\\
-	\trimagen{Senal20_BPSK}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			{Senal25_BPSK}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			{Senal50_BPSK}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
-			Es notorio en cada grafico la relacion de cambio de fase cada vez que la señal modulante cambia entre valores discretos, lo cual corresponde a una definicion directa de señales tipo BPSK.
-	\newpage
-	Luego se implementa el siguiente codigo $Matlab$ para generar los espectros:
-	
-	\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT BPSK]
-	%%
-	%FFT
-	close all
-	X = fftshift(fft(f1));
-	f = fs/2*linspace(-1,1,length(X));
-	plot(f,10*log10(abs(X)))
-      axis([-5e5 -3e5 0 60])
-      [x,y] = ginput(5)
-	title('Espectro de senal BPSK')
-	xlabel('Frecuencia(Hz)')
-	ylabel('|Y(f)|')
-	\end{lstlisting}
-	
-	Se obtienen los siguientes Espectros:\\
-	\trimagen{Esp1_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			 {Esp1_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			 {Esp1_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
-			 Las principales diferencias encontradas
-			 
-			 Luego, se obtienen las siguientes tablas de datos:
-			 
 			\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
-				\hline
-				1 & -4.0219 & 45.0000  \\
-				2 & -4.0726 & 41.8421   \\
-				3 & -3.9712 & 42.0175   \\
-				4 & -4.1210 & 41.1404   \\
-				5 & -3.9205 & 40.6140  
-			\end{tabular}
-			\caption{Valores frecuencias fundamentales BPSK}
-			\label{tab:tabla1}
-		\end{table}
-		
-	\newpage
-		\item \textbf{Problema 2}
-		
-		Se procede a calcular analiticamente los anchos de banda para cada uno de los casos anteriores. Para ello se utilizarán graficas espectrales mediante matlab dependiendo del criterio de determinacion de Bandwith pedido.
-		\subsection{Ancho de Banda -3dB}
-			\subsubsection{Señal OOK}
-		Se obtienen los siguientes espectros en base a una caida de -3dB:\\
-	\trimagen{BW_3db_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			 {BW_3db_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			 {BW_3db_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
-			\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
-				\hline
-				1 & 20 & -4.0207 & 56.7544  \\
-				3 & 20 & -4.1728 & 50.2632	\\
-				1 & 25 & -4.0207 & 53.9474   \\
-				3 & 25 & -4.1728 & 48.5088   \\
-				1 & 50 & -4.0207 & 52.8947  \\
-				3 & 50 & -4.1728 & 49.9123   \\
-			\end{tabular}
-			\caption{Caida de -3dB}
-			\label{tab:tabla1}
-		\end{table}	
-		
-		\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
-				\hline
-				20 & 0.1521   \\
-				25 & 0.1521  \\
-				50 & 0.1521   \\
-			\end{tabular}
-			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
-			\label{tab:tabla1}
-		\end{table}
-				
-			\subsubsection{Señal BPSK}
-		Se obtienen los siguientes espectros en base a una caida de -3dB:\\
-	\trimagen{BW_3db_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			 {BW_3db_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			 {BW_3db_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\	
-			 		
-			\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
-				\hline
-				1 & 20 & -4.0242 & 55.7018  \\
-				2 & 20 & -4.0726 & 51.4912	\\
-				1 & 25 & -4.0242 & 55.3509   \\
-				2 & 25 & -4.0726 & 52.1930   \\
-				1 & 50 & -4.0242 & 54.4737  \\
-				3 & 50 & -4.1694 & 49.0351   \\
-			\end{tabular}
-			\caption{Caida de -3dB}
-			\label{tab:tabla1}
-		\end{table}				
+				\centering
+				\begin{tabular}{c c c c c}
+					Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
+					\hline
+					1 & -4.0207 & 57.6316  \\
+					2 & -4.0714 & 49.7368   \\
+					3 & -3.9700 & 49.5614   \\
+					4 & -4.1221 & 48.8596   \\
+					5 & -3.9194 & 48.6842  
+				\end{tabular}
+				\caption{Valores frecuencias fundamentales OOK}
+				\label{tab:tabla1}
+			\end{table}
 
-		\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
-				\hline
-				20 & 0.0519  \\
-				25 & 0.0484	  \\
-				50 & 0.1452   \\
-			\end{tabular}
-			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
-			\label{tab:tabla1}
-		\end{table}			
-			
-			
-		\subsection{Ancho de Banda Primer Nulo}
-			\subsubsection{Señal OOK}
-			Se obtienen los siguientes Espectros en base al primer nulo:\\
-	\trimagen{BW_null_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			 {BW_null_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			 {BW_null_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
-			 
-		
-		\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
-				\hline
-				1 & 20 & -4.2742 & 19.7368  \\
-				2 & 20 & -3.7719 & 20.4386	\\
-				1 & 25 & -3.8180 & 20.9649   \\
-				2 & 25 & -4.2235 & 19.7368   \\
-				1 & 50 & -4.1221 & 18.8596  \\
-				2 & 50 & -3.9194 & 21.3158   \\
-				
-			\end{tabular}
-			\caption{Nulos señales OOK a diversos ciclos de trabajo}
-			\label{tab:tabla1}
-			
-		\end{table}
-		\begin{center}
-		Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
-		\end{center}
-
-		\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
-				\hline
-				20 & 0.5023   \\
-				25 & 0.4055	  \\
-				50 & 0.2027   \\
-			\end{tabular}
-			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
-			\label{tab:tabla1}
-		\end{table}
-		
+		\newpage
 		\subsubsection{Señal BPSK}
-			Se obtienen los siguientes Espectros en base al primer nulo:\\
-	\trimagen{BW_null_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
-			 {BW_null_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
-			 {BW_null_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
-			 
-			 \begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
-				\hline
-				1 & 20 & -4.2592 & 7.4561  \\
-				2 & 20 & -3.7546 & 6.7544	\\
-				1 & 25 & -4.2108 & 7.8070  \\
-				2 & 25 & -3.8030 & 7.1053   \\
-				1 & 50 & -4.1071 & 6.9298   \\
-				2 & 50 & -3.9067 & 7.4561   \\
-				
-			\end{tabular}
-			\caption{Nulos señales BPSK a diversos ciclos de trabajo}
-			\label{tab:tabla1}
-		\end{table}
-		
-		\begin{center}
-		Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
-		\end{center}
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab BPSK]
+				%Experiencia 3
+				clear all; close all;
+				%BPSK
+				%Caracteristicas: Debe tener un indice de modulacion igual a 1
+				Am= 1;
+				Ac= 1;
+				fm= 5e3; 
+				fc= 400e3;
+				duty=50;
+				syms t;
+				%Variables
+				wc= 2*pi*fc;
+				wm= 2*pi*fm;
+				m = (Am/Ac);
+				fs= 2*wc;
+				%Tiempo
+				Tm = (1/fm);
+				t = [0:(Tm/1000):1000*Tm];
+				%senal Modulante
+				E = (0.5+0.5.*square(t.*wm,duty));
+				%senal ASK
+				f1=cos(t.*wc + 180.*E);
+				%Graficos senal BSK
+				title('senal BPSK')
+				subplot(2,1,1);
+				A = plot(t,f1);
+				grid on;
+				set(A,'Color','black','LineWidth',2)
+				axis ([0 2*Tm -3.5*m 3.5*m]);
+				xlabel('Tiempo[s]')
+				ylabel('Voltaje[V]')
 
-		\begin{table}[ht]
-			\centering
-			\begin{tabular}{c c c c c}
-				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
-				\hline
-				20 & 0.5046   \\
-				25 & 0.4078	  \\
-				50 & 0.2004   \\
-			\end{tabular}
-			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
-			\label{tab:tabla1}
-		\end{table}	
+				%Grafico senal Modulante
+				title('Senal Modulante')
+				subplot(2,1,2);
+				B = plot(t,E);
+				grid on;
+				title('Senal Modulante')
+				set(B,'Color','red','LineWidth',2)
+				set(gca)
+				axis ([0 2*Tm -0.5*m 1.5*m]);
+				xlabel('Tiempo[s]')
+				ylabel('Voltaje[V]')
+			\end{lstlisting}
+
+			Se obtienen los siguientes gráficos:\\
+			\trimagen{Senal20_BPSK}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+					{Senal25_BPSK}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+					{Senal50_BPSK}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+					Es notorio en cada grafico la relacion de cambio de fase cada vez que la señal modulante cambia entre valores discretos, lo cual corresponde a una definicion directa de señales tipo BPSK.
+			\newpage
+			Luego se implementa el siguiente codigo $Matlab$ para generar los espectros:
+
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT BPSK]
+				%%
+				%FFT
+				close all
+				X = fftshift(fft(f1));
+				f = fs/2*linspace(-1,1,length(X));
+				plot(f,10*log10(abs(X)))
+				  axis([-5e5 -3e5 0 60])
+				  [x,y] = ginput(5)
+				title('Espectro de senal BPSK')
+				xlabel('Frecuencia(Hz)')
+				ylabel('|Y(f)|')
+			\end{lstlisting}
+
+			Se obtienen los siguientes Espectros:\\
+			\trimagen{Esp1_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+					 {Esp1_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+					 {Esp1_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+					 Las principales diferencias encontradas
+	 
+					 Luego, se obtienen las siguientes tablas de datos:
+	 
+			\begin{table}[ht]
+				\centering
+				\begin{tabular}{c c c c c}
+					Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
+					\hline
+					1 & -4.0219 & 45.0000  \\
+					2 & -4.0726 & 41.8421   \\
+					3 & -3.9712 & 42.0175   \\
+					4 & -4.1210 & 41.1404   \\
+					5 & -3.9205 & 40.6140  
+				\end{tabular}
+				\caption{Valores frecuencias fundamentales BPSK}
+				\label{tab:tabla1}
+			\end{table}
+		\newpage
+	\subsection{Problema 2}
+		Se procede a calcular analiticamente los anchos de banda para cada uno de los casos anteriores. Para ello se utilizarán graficas espectrales mediante matlab dependiendo del criterio de determinacion de Bandwith pedido.
+		\subsubsection{Ancho de Banda -3dB}
+			\begin{enumerate}[a)]
+				\item \textbf{Señal OOK}
+				
+					Se obtienen los siguientes espectros en base a una caida de -3dB:\\
+					\trimagen{BW_3db_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+							 {BW_3db_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+							 {BW_3db_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+							\hline
+							1 & 20 & -4.0207 & 56.7544  \\
+							3 & 20 & -4.1728 & 50.2632	\\
+							1 & 25 & -4.0207 & 53.9474   \\
+							3 & 25 & -4.1728 & 48.5088   \\
+							1 & 50 & -4.0207 & 52.8947  \\
+							3 & 50 & -4.1728 & 49.9123   \\
+						\end{tabular}
+						\caption{Caida de -3dB}
+						\label{tab:tabla1}
+					\end{table}	
+
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+							\hline
+							20 & 0.1521   \\
+							25 & 0.1521  \\
+							50 & 0.1521   \\
+						\end{tabular}
+						\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+						\label{tab:tabla1}
+					\end{table}
+					\newpage
+				\item \textbf{Señal BPSK}
+				
+					Se obtienen los siguientes espectros en base a una caida de -3dB:\\
+					\trimagen{BW_3db_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+							 {BW_3db_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+							 {BW_3db_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\	
+			
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+							\hline
+							1 & 20 & -4.0242 & 55.7018  \\
+							2 & 20 & -4.0726 & 51.4912	\\
+							1 & 25 & -4.0242 & 55.3509   \\
+							2 & 25 & -4.0726 & 52.1930   \\
+							1 & 50 & -4.0242 & 54.4737  \\
+							3 & 50 & -4.1694 & 49.0351   \\
+						\end{tabular}
+						\caption{Caida de -3dB}
+						\label{tab:tabla1}
+					\end{table}				
+
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+							\hline
+							20 & 0.0519  \\
+							25 & 0.0484	  \\
+							50 & 0.1452   \\
+						\end{tabular}
+						\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+						\label{tab:tabla1}
+					\end{table}			
+					\newpage
+			\end{enumerate}
+	
+		\subsubsection{Ancho de Banda Primer Nulo}
+			\begin{enumerate}[a)]
+				\item \textbf{Señal OOK}
+				
+					Se obtienen los siguientes Espectros en base al primer nulo:\\
+					\trimagen{BW_null_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+							 {BW_null_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+							 {BW_null_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+	 
+
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+							\hline
+							1 & 20 & -4.2742 & 19.7368  \\
+							2 & 20 & -3.7719 & 20.4386	\\
+							1 & 25 & -3.8180 & 20.9649   \\
+							2 & 25 & -4.2235 & 19.7368   \\
+							1 & 50 & -4.1221 & 18.8596  \\
+							2 & 50 & -3.9194 & 21.3158   \\
+		
+						\end{tabular}
+						\caption{Nulos señales OOK a diversos ciclos de trabajo}
+						\label{tab:tabla1}
+	
+					\end{table}
+					\begin{center}
+						Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
+					\end{center}
+
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+							\hline
+							20 & 0.5023   \\
+							25 & 0.4055	  \\
+							50 & 0.2027   \\
+						\end{tabular}
+						\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+						\label{tab:tabla1}
+					\end{table}
+					\newpage
+				\item \textbf{Señal BPSK}
+				
+					Se obtienen los siguientes Espectros en base al primer nulo:\\
+					\trimagen{BW_null_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+							 {BW_null_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+							 {BW_null_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+	 
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+							\hline
+							1 & 20 & -4.2592 & 7.4561  \\
+							2 & 20 & -3.7546 & 6.7544	\\
+							1 & 25 & -4.2108 & 7.8070  \\
+							2 & 25 & -3.8030 & 7.1053   \\
+							1 & 50 & -4.1071 & 6.9298   \\
+							2 & 50 & -3.9067 & 7.4561   \\
+		
+						\end{tabular}
+						\caption{Nulos señales BPSK a diversos ciclos de trabajo}
+						\label{tab:tabla1}
+					\end{table}
+
+					\begin{center}
+						Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
+					\end{center}
+
+					\begin{table}[ht]
+						\centering
+						\begin{tabular}{c c c c c}
+							Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+							\hline
+							20 & 0.5046   \\
+							25 & 0.4078	  \\
+							50 & 0.2004   \\
+						\end{tabular}
+						\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+						\label{tab:tabla1}
+					\end{table}	
+			\end{enumerate}
+			\newpage
 
 		\subsubsection{Determinacion Ancho de Banda 98\% Potencia}
-			Para determinar analiticamente el 98\% de potencia de una señal se utilizará calculo de 			coeficientes de la Serie de Fourie. Sea una resistencia de $50[\Omega]$, la potencia total disipada en ella tiene un valor de:
-			
-		\begin{equation}	
-	P_{av}={1 \over 2 \cdot 50}(A^{2}+B^{2})[W]
-		\end{equation}
-		
-		
-	Con A= Amplitud Señal Modulante y B= Amplitud Señal Portadora	
-		
-		\item \textbf{Problema 3}
-		
-		En la Figura \ref{fig:preg3.1} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
-		
+			Para determinar analiticamente el 98\% de potencia de una señal se utilizará calculo de 			coeficientes de la Serie de Fourie. Sea una resistencia de $50[\Omega]$, la potencia total disipada en ella tiene un valor de:\\
+			Con A= Amplitud Señal Modulante y B= Amplitud Señal Portadora\\	
+			\begin{equation}	
+				P_{av}={1 \over 2 \cdot 50}(A^{2}+B^{2})[W]
+			\end{equation}
+			\begin{equation}
+				+P_{av}=20[mW]	
+			\end{equation}
+			Se utiliza el siguiente codigo $Matlab$ para el calculo de de los coeficientes de la serie de Fourier para una señal Modulante tipo OOK. El cálculo de la potencia para una señal modulante con 50\% de ciclo de trabajo es: 
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK]
+				%%
+				clear all;
+				close all;
+				syms t n;
+				Am = 1;
+				Ac = 1;
+				m = (Am/Ac);
+				fm= 5e3; 
+				fc= 400e3;
+				wc= 2*pi*fc;
+				wm= 2*pi*fm;
+				Tm = (1/fm);
+				duty = 50;
+				%senal Modulante
+				E = m.*sign(cos(t.*wm));
+				%coef An
+				An=(2/Tm)*int(E*cos(n*t*2*pi/Tm),t,(-(Tm/2)),((Tm/2)))
+
+				%Coef Bn
+				Bn=(2/Tm)*int(E*sin(n*t*2*pi/Tm),t,(-(Tm/2)),((Tm/2)))
+				%%
+				Pk = sqrt(An^2+Bn^2)
+				suma1= symsum(Pk,n,1,5)
+			\end{lstlisting}
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK Potencia]	
+					Pk =
+ 
+					((sin(pi*n) - 2*sin((pi*n)/2))^2/n^2)^(1/2)/(50*pi)
+			\end{lstlisting}
+
+			\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK Potencia]
+					suma1 =
+ 
+					0.019523
+			\end{lstlisting}
+			Luego, el 98\% de la potencia corresponde a $0.98 \cdot 0.020=0.0196$. El valor Obtenido al sumar los primeros 5 armonicos corresponde a $0.019523$. Finalmente al usar los primeros 5 armonicos se obtiene un ancho de banda cercano a $10000[Hz]$.
+			\newpage
+	\subsection{Problema 3}
+	
+		En la Figura \ref{fig:preg3_1} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
+	
 		\imagen[0.8]
-			{model3}{\label{fig:model3}}
-			{Modelo en Simulink a utilizar para simular demodulación sincrónica.}
-			
-		Se puede apreciar que 
-		\item \textbf{Problema 4}
+			{preg3_1}{\label{fig:preg3_1}}
+			{Demodulación señal OOK.}
 		
+		Se puede apreciar que en los casos en que la demodulación se realiza con una señal portadora en fase o en contrafase (180º) se obtiene la máxima amplitud de señal resultante con la diferencia que en contrafase se obtiene la señal invertida. Para el caso donde se tiene un desfase de 90º se obtiene mínima demodulación que resulta en una señal nula a la salida. Este efecto concuerda con lo que matemáticamente se dedujo sobre la dependencia de la señal demodulada con respecto del desfase $\theta$ de la forma $A\sim\cos(\theta)$.\\
+		
+		Del gráfico también se puede notar que la máxima amplitud que se puede obtener al demodular corresponde a la mitad de la amplitud de la señal modulante debido a la distribución de la potencia de la señal al realizar una multiplicación por un coseno en el proceso de demodulación. Esta energia se desplaza en el espectro a un rango de frecuencia equivalente al doble de las frecuencia de la señal modulada OOK; estas componentes se atenúan mediante un filtro pasabajos ubicado al final del proceso de demodulación.
+		\newpage
+		En la Figura \ref{fig:preg3_2} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
+	
+		\imagen[0.8]
+			{preg3_2}{\label{fig:preg3_2}}
+			{Demodulación señal BPSK.}
+		
+		Se puede observar al igual que en la primera simulación que tanto en la demodulación con portadora en fase como en contrafase se tienen las máximas amplitudes en las señales demoduladas, mientras que en el desfase de 90º se tiene salida nula.
+		\newpage
+	\subsection{Problema 4}
+	
 		Se tiene el siguiente circuito desfasador mostrado a continuación:
+	
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=0.6\textwidth]{circuitdesf}
+			\caption{Circuito Desfasador.}
+			\label{fig:ejemplo}
+		\end{figure}
+
+	
+		Para comenzar entenderemos cuales son las caracteristicas que hacen del amplificador operacional AD817 util en esta experiencia,siendo una de estas su ancho de banda unitaria el cual es de 50[Mhz] lo que quiere decir que dentro de este rango de frecuencias no se presentaran atenuaciones en la señal de salida, como en este caso se utilizara una frecuencia de portadora de $f_{c} = 400[kHz]$ el amplificador operacional no causara problema a la señal de salida.
+
+		Otra característica importante es el slew rate el cual en el AD817 es de $350[\frac{V}{\mu s}]$ , el slew rate es la máxima velocidad de cambio que puede tener la señal de salida, es decir la capacidad del A.O para seguir los cambios de una señal de alta frecuencia de entrada y que la señal de salida no presente problemas.
+
+		En conclusión estas caracteristicas del AD817 hace posible el procesamiento de señales de entrada de alta velocidad siendo algunos ejemplos las señales de imágenes y videos, y en este caso la modulación de alta frecuencia.
+
+		Ahora para diseñar los valores de $ R_{p} $ y $C$ se tiene que la función de transferencia  del circuito desfasador es la siguiente:
+
+		\begin{equation}
+			V_{o} = V_{i} \frac{1- j \omega R C}{1 + j \omega R C}
+		\end{equation}
+	
+		En donde expresando el fasor en modulo y ángulo se tiene:
+
+		\begin{equation*}
+			\abs{V_{o}}  = \abs{V_{i}} \sqrt{\frac{1 +( \omega R C)^2}{1 +( \omega R C)^2}} \frac{\angle \arctan(- \omega R C ) }{\angle \arctan(\omega R C )}
+		\end{equation*}
+
+		\newpage
+
+		Dado que la arcotangente es una función impar finalmente se obtiene:
+
+		\begin{equation}
+			\abs{V_{o}}  = \abs{V_{i}} \angle -2 \arctan (\omega R C)
+		\end{equation}
+	
+		Se observa que no importa la frecuencia o valores de R y C la amplitud de la señal salida es igual al de la entrada, ahora tomando el ángulo se tiene:	
+
+		\begin{align*}
+			\theta & = -2 \arctan (\omega R C) \\
+			R & = \frac{\tan( -\theta/2)}{ \omega C }\\
+		\end{align*}
+
+		Dado que $- \frac{\pi}{2}< \theta < 0$ 	buscamos el desfase para $\theta =- \frac{\pi}{2}$ Remplazando este valor en la ecuación se obtiene:
+
+		\begin{equation}
+			R = \alpha R_{p} = \frac{1}{\omega C}
+		\end{equation}
+
+		Escogiendo para este valor de desfase,el valor máximo del potenciometro y con $f_{c}= 400[kHz]$ se tiene
+
+		\begin{align*}
+			\alpha & = 1 \\
+			\omega & = 2 \pi f_{c} = 2.513.274 [\frac{rad}{s}] \\
+		\end{align*}
+
+		Fijando el potenciometro de $ R=2[k \Omega ] $ se tendra un valor de $ C = 0.198[nF] $.
+
+		Finalemte con respecto a $ R_{1} $ se escoge un valor de unos pocos $ k \Omega $ con el fin de reducir el efecto ocasionado por las capacitancias parasitas, las cuales provocan oscilaciones de alta frecuencia en el lazo cerrado. 
+
+		Luego los valores diseñados son:
+
+		\begin{align*}
+			R & = 2[k \Omega] \\
+			R_{1} & = 10[k \Omega] \\
+			C & = 0.198[nF] \\
+		\end{align*}
+
+		\newpage
+
+	\subsection{Problema 5}
+
+		Para diseñar el circuito detector de envolvente se basa en el siguiente criterio de diseño:
+
+		\begin{equation}
+			\frac{1}{f_{p}} \ll \tau \ll \frac{1}{f_{m}}
+		\end{equation}
+
+		En donde la constante de tiempo es $\tau = RC$
+
+		Este criterio se dene a que eligiendo un valor muy pequeño de $\tau$ cercano a $1/fp$ existirá un ripple muy pronunciado debido a la rapidez que tendrá el comportamiento dinámico del circuito impediendo la deteccion correcta de la envolvente, por otro lado el valor pequeño de $tau$ producira que el efecto llamado negative peak cliping el cual consiste en que la señal demodulada tiende a redondear y no seguir correctamente a la señal AM será menos significativa.
+
+		En la siguiente figura se ilustran estos efectos.	
+	
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=0.7\textwidth]{demodulacion1}
+			\caption{Efectos Ripple y Negative peak clipping.}
+			\label{fig:ejemplo}
+		\end{figure}
+
+
+		Por otro lado si escogemos un valor de $tau$ más grande el efecto ripple será menos notorio, pero por otro lado el efecto del negative peak clipping se verá incrementado por lo cual usando las inecuaciones (4) consideraremos componentes con valores tales que la constante de tiempo se encuentre en un equilibrio 
+		para que no exista ni un efecto Ripple pronunciado ni un negative peak clipping pronunciado y obtener una demodulacion bastante correcta de la señal AM.
 		
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.6\textwidth]{circuitdesf}
-  \caption{Circuito Desfasador.}
-  \label{fig:ejemplo}
-\end{figure}
+		Considerando $ f_{m} = 10[kHz] $ y $ f_{c} = 400[kHz] $ resolviendo se tiene:
 
+		\begin{align*}
+			\frac{1}{f_{p}}& \ll \tau \ll  \frac{1}{f_{m}} \\
+			2,5\cdot10^{-6} [s] &  \ll RC \ll  1\cdot10^{-4} [s] \\
+		\end{align*}
+
+		Considerando $ R = 10[k \Omega] $:
+
+		\begin{equation}
+			0.25[nF]   \ll C \ll  10[nF]
+		\end{equation}
+
+		\newpage
+		Escogiendo $ C = 5.6[nF] $ y simulando:
+
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=0.8\textwidth]{circuitosim}
+			\caption{Circuito simulado mediante LTspice.}
+			\label{fig:ejemplo}
+		\end{figure}
+
+		\begin{figure}[H]
+			\centering
+				\includegraphics[width=0.8\textwidth]{graficodemod}
+			\caption{Señal moduladora cuadrada y señal demodulada.}
+			\label{fig:ejemplo}
+		\end{figure}
+
+		En la figura se observa  que la señal demodulada  se observa cómo se encuentran presentes ambos efectos explicados anteriormente pero ni uno de los es tan imponente como para afectar la finalidad del circuito que es la detección de envolvente. Además se observa menos voltaje en la señal de salida esto se debe a la caída de tensión que existe en el diodo.\\
 		
-Para comenzar entenderemos cuales son las caracteristicas que hacen del amplificador operacional AD817 util en esta experiencia,siendo una de estas su ancho de banda unitaria el cual es de 50[Mhz] lo que quiere decir que dentro de este rango de frecuencias no se presentaran atenuaciones en la señal de salida, como en este caso se utilizara una frecuencia de portadora de $f_{c} = 400[kHz]$ el amplificador operacional no causara problema a la señal de salida.
+		El diodo que se utilizara es el 1N4148 el cual es un con alta velocidad de switching de frecuencia máxima de 250[MHz], por lo cual para nuestra señal AM de 400[kHz] es más que suficiente , NO SEGURO EN ALGUNOS LADOS SALE 100 MEGAS   
 
-Otra característica importante es el slew rate el cual en el AD817 es de $350[\frac{V}{\mu s}]$ , el slew rate es la máxima velocidad de cambio que puede tener la señal de salida, es decir la capacidad del A.O para seguir los cambios de una señal de alta frecuencia de entrada y que la señal de salida no presente problemas.
-
-En conclusión estas caracteristicas del AD817 hace posible el procesamiento de señales de entrada de alta velocidad siendo algunos ejemplos las señales de imágenes y videos, y en este caso la modulación de alta frecuencia.
-
-Ahora para diseñar los valores de $ R_{p} $ y $C$ se tiene que la función de transferencia  del circuito desfasador es la siguiente:
-
-\begin{equation}
-V_{o} = V_{i} \frac{1- j \omega R C}{1 + j \omega R C}
-\end{equation}
-		
-En donde expresando el fasor en modulo y ángulo se tiene:
-
-\begin{equation*}
-\abs{V_{o}}  = \abs{V_{i}} \sqrt{\frac{1 +( \omega R C)^2}{1 +( \omega R C)^2}} \frac{\angle \arctan(- \omega R C ) }{\angle \arctan(\omega R C )}
-\end{equation*}
-
-\newpage
-
-Dado que la arcotangente es una función impar finalmente se obtiene:
-
-\begin{equation}
-\abs{V_{o}}  = \abs{V_{i}} \angle -2 \arctan (\omega R C)
-\end{equation}
-		
-Se observa que no importa la frecuencia o valores de R y C la amplitud de la señal salida es igual al de la entrada, ahora tomando el ángulo se tiene:	
-
-\begin{align*}
-\theta & = -2 \arctan (\omega R C) \\
-R & = \frac{\tan( -\theta/2)}{ \omega C }\\
-\end{align*}
-
-Dado que $- \frac{\pi}{2}< \theta < 0$ 	buscamos el desfase para $\theta =- \frac{\pi}{2}$ Remplazando este valor en la ecuación se obtiene:
-
-\begin{equation}
-R = \alpha R_{p} = \frac{1}{\omega C}
-\end{equation}
-
-Escogiendo para este valor de desfase,el valor máximo del potenciometro y con $f_{c}= 400[kHz]$ se tiene
-
-\begin{align*}
-\alpha & = 1 \\
-\omega & = 2 \pi f_{c} = 2.513.274 [\frac{rad}{s}] \\
-\end{align*}
-
-Fijando el potenciometro de $ R=2[k \Omega ] $ se tendra un valor de $ C = 0.198[nF] $.
-
-Finalemte con respecto a $ R_{1} $ se escoge un valor de unos pocos $ k \Omega $ con el fin de reducir el efecto ocasionado por las capacitancias parasitas, las cuales provocan oscilaciones de alta frecuencia en el lazo cerrado. 
-
-Luego los valores diseñados son:
-
-\begin{align*}
-R & = 2[k \Omega] \\
-R_{1} & = 10[k \Omega] \\
-C & = 0.198[nF] \\
-\end{align*}
-
-\newpage
-
-\item \textbf{Problema 5}
-
-Para diseñar el circuito detector de envolvente se basa en el siguiente criterio de diseño:
-
-\begin{equation}
- \frac{1}{f_{p}} \ll \tau \ll \frac{1}{f_{m}}
-\end{equation}
-
-En donde la constante de tiempo es $\tau = RC$
-
-Este criterio se dene a que eligiendo un valor muy pequeño de $\tau$ cercano a $1/fp$ existirá un ripple muy pronunciado debido a la rapidez que tendrá el comportamiento dinámico del circuito impediendo la deteccion correcta de la envolvente, por otro lado el valor pequeño de $tau$ producira que el efecto llamado negative peak cliping el cual consiste en que la señal demodulada tiende a redondear y no seguir correctamente a la señal AM será menos significativa.
-
-En la siguiente figura se ilustran estos efectos.	
-		
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.7\textwidth]{demodulacion1}
-  \caption{Efectos Ripple y Negative peak clipping.}
-  \label{fig:ejemplo}
-\end{figure}
-
-
-Por otro lado si escogemos un valor de $tau$ más grande el efecto ripple será menos notorio, pero por otro lado el efecto del negative peak clipping se verá incrementado por lo cual usando las inecuaciones (4) consideraremos componentes con valores tales que la constante de tiempo se encuentre en un equilibrio 
-para que no exista ni un efecto Ripple pronunciado ni un negative peak clipping pronunciado y obtener una demodulacion bastante correcta de la señal AM.
-\newpage
-Considerando $ f_{m} = 10[kHz] $ y $ f_{c} = 400[kHz] $ resolviendo se tiene:
-
-\begin{align*}
-\frac{1}{f_{p}}& \ll \tau \ll  \frac{1}{f_{m}} \\
-2,5\cdot10^{-6} [s] &  \ll RC \ll  1\cdot10^{-4} [s] \\
-\end{align*}
-
-Considerando $ R = 10[k \Omega] $:
-
-\begin{equation}
-0.25[nF]   \ll C \ll  10[nF]
-\end{equation}
-
-Escogiendo $ C = 5.6[nF] $ y simulando:
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.8\textwidth]{circuitosim}
-  \caption{Circuito simulado mediante LTspice.}
-  \label{fig:ejemplo}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-    \includegraphics[width=0.8\textwidth]{graficodemod}
-  \caption{Señal moduladora cuadrada y señal demodulada.}
-  \label{fig:ejemplo}
-\end{figure}
-
-En la figura se observa  que la señal demodulada  se observa cómo se encuentran presentes ambos efectos explicados anteriormente pero ni uno de los es tan imponente como para afectar la finalidad del circuito que es la detección de envolvente. Además se observa menos voltaje en la señal de salida esto se debe a la caída de tensión que existe en el diodo.
-\newpage
-El diodo que se utilizara es el 1N4148 el cual es un con alta velocidad de switching de frecuencia máxima de 250[MHz], por lo cual para nuestra señal AM de 400[kHz] es más que suficiente , NO SEGURO EN ALGUNOS LADOS SALE 100 MEGAS   
-\end{enumerate}
 \newpage
 
 
 
 \section{Conclusiones}
 	\begin{itemize}
-		\item Conclusión
-		\item Conclusión
+		\item Es posible obtener modulación de señales a traves de señales digitales, en donde el tipo de modulación esta directamente relacionado con el cuociente entre las señal portadora y modulante. Dependiendo de la magnitud del coeficiente de modulación se obtiene una variedad de tipos de señales moduladas entre las que destacan por su simplicidad y eficiencia las señales OOK y BPSK.
+		\item Se destaca la generación de nulos dependiendo del ciclo de trabajo de la señal modulante. Sea BPSK o OOK los espectros de cada señale destacan una relacion en donde $T/\tau=n$
+		\item El calculo de potencias esta directamente relacionado con características espectrales, en donde los criterios tales como -3dB y ancho de banda de primer nulo contienen en gran cantidad de la potencia total de la señal, siendo un buen indicador del ancho de banda efectivo.
+		\item El desfase que pueda existir entre la señal portadora utilizada al modular y la señal portadora utilizada al demodular juega un rol importante ya que si se tienen ciertos valores de desfase se puede demodular de la manera más óptima mientras que para otros valores no se podrá realizar demodulación alguna.
 	\end{itemize}
 \end{document}
