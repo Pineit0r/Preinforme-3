@@ -55,7 +55,15 @@
 		Se procede a determinar el ancho de banda de las señañes simuladas en el Problema 1 en base a criterios como: Ancho de Banda de Primer Nulo, Ancho de de banda -3dB y ancho de banda en base al 98\% de la Potencia. Se  analizaran y comentarán cada uno de  los resultados obtenidos
 		\item \textbf{Problema 3}
 		
-			Se utiliza el software MATLAB/Simulink para realizar la simulación del circuito demodulador sincrónico.
+			Se utiliza el software MATLAB/Simulink para realizar la simulación del circuito demodulador sincrónico. En la Figura \ref{fig:model3} se ilustra el modelo a utilizar en Simulink para simular la etapa de modulación y demodulación.
+			\imagen[0.8]
+			{model3}{\label{fig:model3}}
+			{Modelo en Simulink a utilizar para simular demodulación sincrónica.}
+			
+			Para cada simulación (OOK y BPSK)se considera una señal modulante de frecuencia $f_m=5$ [KHz], una frecuencia de portadora de $f_c=400$ [KHz] y un ancho de banda (determinado por el criterio del primer nulo) de $f_{corte}=10$ [KHz].
+			
+			En la simulación se considera la demodulación con cinco diferentes desfases para la portadora (0º, 45º, 90º, 135º y 180º) dentro de un tiempo de $3$ [ms] para lograr comparar facilmente el efecto de éste en la señal demodulada.
+			
 		\item \textbf{Problema 4}
 		
 		\item \textbf{Problema 5}
@@ -434,6 +442,13 @@
 		
 		\item \textbf{Problema 3}
 		
+		En la Figura \ref{fig:preg3.1} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
+		
+		\imagen[0.8]
+			{model3}{\label{fig:model3}}
+			{Modelo en Simulink a utilizar para simular demodulación sincrónica.}
+			
+		Se puede apreciar que 
 		\item \textbf{Problema 4}
 		
 		Se tiene el siguiente circuito desfasador mostrado a continuación:
