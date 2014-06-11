@@ -49,8 +49,10 @@
 	\begin{enumerate}
 		\item \textbf{Problema 1}
 		
+		A traves del uso del software $Matlab$ se procede a simular señales de tipos OOK y BPSK en base a caracteristicas de diseño determinadas observando sus formas de onda y obteniendo el espectro de cada una en base a ciclos de trabajo determinados. Se  analizaran y comentarán cada uno de  los resultados obtenidos.
 		\item \textbf{Problema 2}
 		
+		Se procede a determinar el ancho de banda de las señañes simuladas en el Problema 1 en base a criterios como: Ancho de Banda de Primer Nulo, Ancho de de banda -3dB y ancho de banda en base al 98\% de la Potencia. Se  analizaran y comentarán cada uno de  los resultados obtenidos
 		\item \textbf{Problema 3}
 		
 			Se utiliza el software MATLAB/Simulink para realizar la simulación del circuito demodulador sincrónico.
@@ -65,7 +67,370 @@
 	\begin{enumerate}
 		\item \textbf{Problema 1}
 		
+		Se procede a elaborar tablas de amplitud de componentes espectrales de señales moduladas digitalemnte mediante OOK y BPSK con los siguientes parámetros:\\
+		Para la Señal Portadora:\\
+		$Ac=1[V]$\\
+		$fc=400[Khz]$\\
+		Para la Señal Modulante:\\
+		$Am=1[V]$\\
+		$fm=5000[Hz]$\\\\
+		Para las respectivas simulaciones, se utilizaran los siguientes códigos en $Matlab$:\\
+		\subsection{Señal OOK}
+		
+		\begin{lstlisting}[label=some-code,caption=Codigo Matlab OOK]
+		clear all; close all;
+		%OOK
+		%Caracteristicas: Debe tener un indice de modulacion igual a 1
+		Am= 1;
+		Ac= 1;
+		fm= 5e3; 
+		fc= 400e3;
+		duty=50;
+		syms t;
+		%Variables
+		wc= 2*pi*fc;
+		wm= 2*pi*fm;
+		m = (Am/Ac);
+		fs= 2*wc;
+		%Tiempo
+		Tm = (1/fm);
+		t = 0:(Tm/1000):1000*Tm;
+		%senal Modulante
+		E = m.*(square(t.*wm,duty));
+		%senal OOK
+		f1=(1+E).*cos(t.*wc);
+		%Graficos senal OOK
+		title('senal OOK')
+		subplot(2,1,1);
+		A = plot(t,f1);
+		grid on;
+		set(A,'Color','black','LineWidth',2)
+		axis ([0 2*Tm -3.5*m 3.5*m]);
+		xlabel('Tiempo[s]')
+		ylabel('Voltaje[V]')
+
+		%Grafico senal Modulante
+		title('Senal Modulante')
+		subplot(2,1,2);
+		B = plot(t,E);
+		grid on;
+		title('Senal Modulante')
+		set(B,'Color','red','LineWidth',2)
+		set(gca)
+		axis ([0 2*Tm -1.5*m 1.5*m]);
+		xlabel('Tiempo[s]')
+		ylabel('Voltaje[V]')
+		\end{lstlisting}
+		\newpage
+		Se obtienen los siguientes Gráficos:
+		
+			\trimagen{Senal20_OOK}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			{Senal25_OOK}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			{Senal50_OOK}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}
+			\\
+			Cabe destacar la generacion de nulos en la señal dependiendo del ciclo de trabajo de la señal Modulante. La relacion de nulos generados se plantea a traves de :
+			\begin{equation}
+			T/\tau =n
+			\end{equation}
+			Donde n es la posicion del Nulo.\\\\
+			
+		Luego, se implementa el siguiente código para generar los espectros:		
+	
+	\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT OOK]
+	%%
+	%FFT
+	close all
+	X = fftshift(fft(f1));
+	f = fs/2*linspace(-1,1,length(X));
+	plot(f,10*log10(abs(X)))
+      axis([-5e5 -3e5 0 60])
+      [x,y] = ginput(5)
+	title('Espectro de senal OOK')
+	xlabel('Frecuencia(Hz)')
+	ylabel('|Y(f)|')
+	\end{lstlisting}
+	
+	Se obtienen los siguientes espectros:\\
+	\trimagen{Esp_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			{Esp_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			{Esp_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}
+	\newpage
+				A traves del uso de la funcion $gidinput$ en $Matlab$ se encuentran las respectivas amplitudes y frecuencias fundamentales para cada uno de los espectros. Los valores son:
+
+	\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
+				\hline
+				1 & -4.0207 & 57.6316  \\
+				2 & -4.0714 & 49.7368   \\
+				3 & -3.9700 & 49.5614   \\
+				4 & -4.1221 & 48.8596   \\
+				5 & -3.9194 & 48.6842  
+			\end{tabular}
+			\caption{Valores frecuencias fundamentales OOK}
+			\label{tab:tabla1}
+		\end{table}
+
+	\newpage	
+	\subsection{Señal BPSK}
+	\begin{lstlisting}[label=some-code,caption=Codigo Matlab BPSK]
+	%Experiencia 3
+		clear all; close all;
+		%BPSK
+		%Caracteristicas: Debe tener un indice de modulacion igual a 1
+		Am= 1;
+		Ac= 1;
+		fm= 5e3; 
+		fc= 400e3;
+		duty=50;
+		syms t;
+		%Variables
+		wc= 2*pi*fc;
+		wm= 2*pi*fm;
+		m = (Am/Ac);
+		fs= 2*wc;
+		%Tiempo
+		Tm = (1/fm);
+		t = [0:(Tm/1000):1000*Tm];
+		%senal Modulante
+		E = (0.5+0.5.*square(t.*wm,duty));
+		%senal ASK
+		f1=cos(t.*wc + 180.*E);
+		%Graficos senal BSK
+		title('senal BPSK')
+		subplot(2,1,1);
+		A = plot(t,f1);
+		grid on;
+		set(A,'Color','black','LineWidth',2)
+		axis ([0 2*Tm -3.5*m 3.5*m]);
+		xlabel('Tiempo[s]')
+		ylabel('Voltaje[V]')
+
+		%Grafico senal Modulante
+		title('Senal Modulante')
+		subplot(2,1,2);
+		B = plot(t,E);
+		grid on;
+		title('Senal Modulante')
+		set(B,'Color','red','LineWidth',2)
+		set(gca)
+		axis ([0 2*Tm -0.5*m 1.5*m]);
+		xlabel('Tiempo[s]')
+		ylabel('Voltaje[V]')
+		\end{lstlisting}
+	
+	Se obtienen los siguientes gráficos:\\
+	\trimagen{Senal20_BPSK}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			{Senal25_BPSK}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			{Senal50_BPSK}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+			Es notorio en cada grafico la relacion de cambio de fase cada vez que la señal modulante cambia entre valores discretos, lo cual corresponde a una definicion directa de señales tipo BPSK.
+	\newpage
+	Luego se implementa el siguiente codigo $Matlab$ para generar los espectros:
+	
+	\begin{lstlisting}[label=some-code,caption=Codigo Matlab FFT BPSK]
+	%%
+	%FFT
+	close all
+	X = fftshift(fft(f1));
+	f = fs/2*linspace(-1,1,length(X));
+	plot(f,10*log10(abs(X)))
+      axis([-5e5 -3e5 0 60])
+      [x,y] = ginput(5)
+	title('Espectro de senal BPSK')
+	xlabel('Frecuencia(Hz)')
+	ylabel('|Y(f)|')
+	\end{lstlisting}
+	
+	Se obtienen los siguientes Espectros:\\
+	\trimagen{Esp1_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			 {Esp1_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			 {Esp1_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+			 Las principales diferencias encontradas
+			 
+			 Luego, se obtienen las siguientes tablas de datos:
+			 
+			\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Nº armónica & Frecuencia $\cdot$ 1.0e+05 [Hz] & Potencia [dB]\\
+				\hline
+				1 & -4.0219 & 45.0000  \\
+				2 & -4.0726 & 41.8421   \\
+				3 & -3.9712 & 42.0175   \\
+				4 & -4.1210 & 41.1404   \\
+				5 & -3.9205 & 40.6140  
+			\end{tabular}
+			\caption{Valores frecuencias fundamentales BPSK}
+			\label{tab:tabla1}
+		\end{table}
+		
+	\newpage
 		\item \textbf{Problema 2}
+		
+		Se procede a calcular analiticamente los anchos de banda para cada uno de los casos anteriores. Para ello se utilizarán graficas espectrales mediante matlab dependiendo del criterio de determinacion de Bandwith pedido.
+		\subsection{Ancho de Banda -3dB}
+			\subsubsection{Señal OOK}
+		Se obtienen los siguientes espectros en base a una caida de -3dB:\\
+	\trimagen{BW_3db_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			 {BW_3db_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			 {BW_3db_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+			\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+				\hline
+				1 & 20 & -4.0207 & 56.7544  \\
+				3 & 20 & -4.1728 & 50.2632	\\
+				1 & 25 & -4.0207 & 53.9474   \\
+				3 & 25 & -4.1728 & 48.5088   \\
+				1 & 50 & -4.0207 & 52.8947  \\
+				3 & 50 & -4.1728 & 49.9123   \\
+			\end{tabular}
+			\caption{Caida de -3dB}
+			\label{tab:tabla1}
+		\end{table}	
+		
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+				\hline
+				20 & 0.1521   \\
+				25 & 0.1521  \\
+				50 & 0.1521   \\
+			\end{tabular}
+			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+			\label{tab:tabla1}
+		\end{table}
+				
+			\subsubsection{Señal BPSK}
+		Se obtienen los siguientes espectros en base a una caida de -3dB:\\
+	\trimagen{BW_3db_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			 {BW_3db_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			 {BW_3db_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\	
+			 		
+			\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Armonica & Ciclo de Trabajo & Frecuencia Armónica $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+				\hline
+				1 & 20 & -4.0242 & 55.7018  \\
+				2 & 20 & -4.0726 & 51.4912	\\
+				1 & 25 & -4.0242 & 55.3509   \\
+				2 & 25 & -4.0726 & 52.1930   \\
+				1 & 50 & -4.0242 & 54.4737  \\
+				3 & 50 & -4.1694 & 49.0351   \\
+			\end{tabular}
+			\caption{Caida de -3dB}
+			\label{tab:tabla1}
+		\end{table}				
+
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+				\hline
+				20 & 0.0519  \\
+				25 & 0.0484	  \\
+				50 & 0.1452   \\
+			\end{tabular}
+			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+			\label{tab:tabla1}
+		\end{table}			
+			
+			
+		\subsection{Ancho de Banda Primer Nulo}
+			\subsubsection{Señal OOK}
+			Se obtienen los siguientes Espectros en base al primer nulo:\\
+	\trimagen{BW_null_OOK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			 {BW_null_OOK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			 {BW_null_OOK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+			 
+		
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+				\hline
+				1 & 20 & -4.2742 & 19.7368  \\
+				2 & 20 & -3.7719 & 20.4386	\\
+				1 & 25 & -3.8180 & 20.9649   \\
+				2 & 25 & -4.2235 & 19.7368   \\
+				1 & 50 & -4.1221 & 18.8596  \\
+				2 & 50 & -3.9194 & 21.3158   \\
+				
+			\end{tabular}
+			\caption{Nulos señales OOK a diversos ciclos de trabajo}
+			\label{tab:tabla1}
+			
+		\end{table}
+		\begin{center}
+		Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
+		\end{center}
+
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+				\hline
+				20 & 0.5023   \\
+				25 & 0.4055	  \\
+				50 & 0.2027   \\
+			\end{tabular}
+			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+			\label{tab:tabla1}
+		\end{table}
+		
+		\subsubsection{Señal BPSK}
+			Se obtienen los siguientes Espectros en base al primer nulo:\\
+	\trimagen{BW_null_BPSK_20}{\label{fig:sim}}{Señal 20\% ciclo de Trabajo}
+			 {BW_null_BPSK_25}{\label{fig:sim}}{Señal 25\% ciclo de Trabajo}
+			 {BW_null_BPSK_50}{\label{fig:sim}}{Señal 50\% ciclo de Trabajo}\\
+			 
+			 \begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				$Numero$ Nulo & Ciclo de Trabajo & Frecuencia Nulos $\cdot$ 1.0e+05[Hz] & Potencia [dB]\\
+				\hline
+				1 & 20 & -4.2592 & 7.4561  \\
+				2 & 20 & -3.7546 & 6.7544	\\
+				1 & 25 & -4.2108 & 7.8070  \\
+				2 & 25 & -3.8030 & 7.1053   \\
+				1 & 50 & -4.1071 & 6.9298   \\
+				2 & 50 & -3.9067 & 7.4561   \\
+				
+			\end{tabular}
+			\caption{Nulos señales BPSK a diversos ciclos de trabajo}
+			\label{tab:tabla1}
+		\end{table}
+		
+		\begin{center}
+		Finalmente los anchos de banda respectivos para cada señal quedan denotados por:
+		\end{center}
+
+		\begin{table}[ht]
+			\centering
+			\begin{tabular}{c c c c c}
+				Ciclo de Trabajo & Ancho de banda$\cdot$ 1.0e+05[Hz] \\
+				\hline
+				20 & 0.5046   \\
+				25 & 0.4078	  \\
+				50 & 0.2004   \\
+			\end{tabular}
+			\caption{Anchos de Banda de Señales para Diversos ciclos de Trabajo}
+			\label{tab:tabla1}
+		\end{table}	
+
+		\subsubsection{Determinacion Ancho de Banda 98\% Potencia}
+			Para determinar analiticamente el 98\% de potencia de una señal se utilizará calculo de 			coeficientes de la Serie de Fourie. Sea una resistencia de $50[\Omega]$, la potencia total disipada en ella tiene un valor de:
+			
+		\begin{equation}	
+	P_{av}={1 \over 2 \cdot 50}(A^{2}+B^{2})[W]
+		\end{equation}
+		
+		
+	Con A= Amplitud Señal Modulante y B= Amplitud Señal Portadora	
 		
 		\item \textbf{Problema 3}
 		
