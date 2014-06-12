@@ -56,7 +56,7 @@
 		\item \textbf{Problema 3}
 		
 			Se utiliza el software MATLAB/Simulink para realizar la simulación del circuito demodulador sincrónico. En la Figura \ref{fig:model3} se ilustra el modelo a utilizar en Simulink para simular la etapa de modulación y demodulación.
-			\imagen[0.8]
+			\imagen[0.75]
 			{model3}{\label{fig:model3}}
 			{Modelo en Simulink a utilizar para simular demodulación sincrónica.}
 			
@@ -66,10 +66,16 @@
 			
 		\item \textbf{Problema 4}
 		
-		En este problema busca familiarizarse con el amplificador operacional AD817, entender qué características son las que lo hacen útil para esta experiencia y diseñar las componentes que lo involucran para lograr desfasar la señal portadora.
+			Se procede al diseño de las componentes $R$ ,$ R_1$ y $C$ en base a la función de transferencia del circuito desfazador con el fin de obtener  un rango de desfase entre $ -\frac{\pi}{2} <\theta< 0$.
 		\item \textbf{Problema 5}
 		
-		El objetivo de este problema es lograr diseñar correctamente el circuito detector de envolvente que se emplea para demodular en dos frecuencias de portadora distintas. Se debe especificar qué componentes se utilizan y el rango de voltajes apropiados para el circuito.
+			Se procede a diseñar las componentes R, C de un detector de envolvente bajo el criterio :
+
+			\begin{equation*}
+			 \frac{1}{f_{p}} \ll \tau \ll \frac{1}{f_{m}}
+			\end{equation*}
+
+			Apoyando el diseño teorico con simulaciones de LTspice analizando si el diseño bajo el criterio señalado anteriormente es correcto y comentando los efectos ocurridos en la señal demodulada.
 	\end{enumerate}
 \newpage
 \newpage
@@ -489,19 +495,19 @@
 			\newpage
 	\subsection{Problema 3}
 	
-		En la Figura \ref{fig:preg3_1} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
+		En la Figura \ref{fig:preg3_1} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK para distintos desfases en la portadora.
 	
-		\imagen[0.8]
+		\imagen[0.9]
 			{preg3_1}{\label{fig:preg3_1}}
 			{Demodulación señal OOK.}
 		
-		Se puede apreciar que en los casos en que la demodulación se realiza con una señal portadora en fase o en contrafase (180º) se obtiene la máxima amplitud de señal resultante con la diferencia que en contrafase se obtiene la señal invertida. Para el caso donde se tiene un desfase de 90º se obtiene mínima demodulación que resulta en una señal nula a la salida. Este efecto concuerda con lo que matemáticamente se dedujo sobre la dependencia de la señal demodulada con respecto del desfase $\theta$ de la forma $A\sim\cos(\theta)$.\\
+		Se puede apreciar que en los casos en que la demodulación se realiza con una señal portadora en fase o en contrafase (180º) se obtiene la máxima amplitud de señal resultante con la diferencia que en contrafase se obtiene la señal invertida. Para el caso donde se tiene un desfase de 90º se obtiene mínima demodulación que resulta en una señal nula a la salida. Este efecto concuerda con lo que matemáticamente se dedujo sobre la dependencia de la amplitud de la señal demodulada con respecto del desfase $\theta$ de la forma $A\sim\cos(\theta)$.\\
 		
 		Del gráfico también se puede notar que la máxima amplitud que se puede obtener al demodular corresponde a la mitad de la amplitud de la señal modulante debido a la distribución de la potencia de la señal al realizar una multiplicación por un coseno en el proceso de demodulación. Esta energia se desplaza en el espectro a un rango de frecuencia equivalente al doble de las frecuencia de la señal modulada OOK; estas componentes se atenúan mediante un filtro pasabajos ubicado al final del proceso de demodulación.
 		\newpage
 		En la Figura \ref{fig:preg3_2} se ilustra el resultado de la simulación al demodular sincrónicamente una señal OOK.
 	
-		\imagen[0.8]
+		\imagen[0.9]
 			{preg3_2}{\label{fig:preg3_2}}
 			{Demodulación señal BPSK.}
 		
@@ -519,55 +525,55 @@
 		\end{figure}
 
 	
-		Para comenzar entenderemos cuales son las caracteristicas que hacen del amplificador operacional AD817 util en esta experiencia,siendo una de estas su ancho de banda unitaria el cual es de 50[Mhz] lo que quiere decir que dentro de este rango de frecuencias no se presentaran atenuaciones en la señal de salida, como en este caso se utilizara una frecuencia de portadora de $f_{c} = 400[kHz]$ el amplificador operacional no causara problema a la señal de salida.
+		Para comenzar entenderemos cuales son las caracteristicas que hacen del amplificador operacional AD817 útil en esta experiencia, siendo una de estas su ancho de banda unitaria el cual es de 0-50[Mhz]. Esto quiere decir que dentro de este rango de frecuencias no se presentaran atenuaciones en la señal de salida. Como en este caso se utiliza una frecuencia de portadora de $f_{c} = 400$[KHz] el amplificador operacional no causa problemas a la señal de salida.
 
-		Otra característica importante es el slew rate el cual en el AD817 es de $350[\frac{V}{\mu s}]$ , el slew rate es la máxima velocidad de cambio que puede tener la señal de salida, es decir la capacidad del A.O para seguir los cambios de una señal de alta frecuencia de entrada y que la señal de salida no presente problemas.
+		Otra característica importante es el slew rate el cual en el AD817 es de $350[V/\mu s]$. El slew-rate es la máxima velocidad de cambio que puede tener la señal de salida, es decir, la capacidad del A.O para seguir los cambios de una señal de alta frecuencia de entrada y que la señal de salida no presente distorsiones.
 
 		En conclusión estas caracteristicas del AD817 hace posible el procesamiento de señales de entrada de alta velocidad siendo algunos ejemplos las señales de imágenes y videos, y en este caso la modulación de alta frecuencia.
 
 		Ahora para diseñar los valores de $ R_{p} $ y $C$ se tiene que la función de transferencia  del circuito desfasador es la siguiente:
 
 		\begin{equation}
-			V_{o} = V_{i} \frac{1- j \omega R C}{1 + j \omega R C}
+			V_{o} = V_{i} \cdot\frac{1- j \omega R C}{1 + j \omega R C}
 		\end{equation}
 	
-		En donde expresando el fasor en modulo y ángulo se tiene:
+		En donde expresando el fasor en magnitud y ángulo se tiene:
 
 		\begin{equation*}
-			\abs{V_{o}}  = \abs{V_{i}} \sqrt{\frac{1 +( \omega R C)^2}{1 +( \omega R C)^2}} \frac{\angle \arctan(- \omega R C ) }{\angle \arctan(\omega R C )}
+			\abs{V_{o}}  = \abs{V_{i}} \sqrt{\frac{1 +( \omega R C)^2}{1 +( \omega R C)^2}} \quad\angle \arctan(- \omega R C ) - \arctan(\omega R C )
 		\end{equation*}
 
-		\newpage
-
-		Dado que la arcotangente es una función impar finalmente se obtiene:
+		Dado que la función $\arctan()$ es una función impar finalmente se obtiene:
 
 		\begin{equation}
-			\abs{V_{o}}  = \abs{V_{i}} \angle -2 \arctan (\omega R C)
+			\abs{V_{o}}  = \abs{V_{i}} \quad\angle -2 \arctan (\omega R C)
 		\end{equation}
 	
-		Se observa que no importa la frecuencia o valores de R y C la amplitud de la señal salida es igual al de la entrada, ahora tomando el ángulo se tiene:	
+		Se observa que sin importar los valores de R y C la amplitud de la señal de salida es igual a la de entrada. Ahora considerando el ángulo se tiene:	
 
 		\begin{align*}
 			\theta & = -2 \arctan (\omega R C) \\
 			R & = \frac{\tan( -\theta/2)}{ \omega C }\\
 		\end{align*}
 
-		Dado que $- \frac{\pi}{2}< \theta < 0$ 	buscamos el desfase para $\theta =- \frac{\pi}{2}$ Remplazando este valor en la ecuación se obtiene:
+		Dado que $- \frac{\pi}{2}< \theta < 0$ 	buscamos el desfase para $\theta =- \frac{\pi}{2}$.
+		\newpage
+		 Remplazando este valor en la ecuación se obtiene:
 
 		\begin{equation}
 			R = \alpha R_{p} = \frac{1}{\omega C}
 		\end{equation}
 
-		Escogiendo para este valor de desfase,el valor máximo del potenciometro y con $f_{c}= 400[kHz]$ se tiene
+		Escogiendo para este valor de desfase,el valor máximo del potenciometro y con $f_{c}= 400$[KHz] se tiene
 
 		\begin{align*}
 			\alpha & = 1 \\
-			\omega & = 2 \pi f_{c} = 2.513.274 [\frac{rad}{s}] \\
+			\omega & = 2 \pi f_{c} = 2.513.274 \,[rad/s] \\
 		\end{align*}
 
-		Fijando el potenciometro de $ R=2[k \Omega ] $ se tendra un valor de $ C = 0.198[nF] $.
+		Fijando el potenciometro de $ R=2[k \Omega ] $ se obtiene un valor de $ C = 0.198[nF] $.\\
 
-		Finalemte con respecto a $ R_{1} $ se escoge un valor de unos pocos $ k \Omega $ con el fin de reducir el efecto ocasionado por las capacitancias parasitas, las cuales provocan oscilaciones de alta frecuencia en el lazo cerrado. 
+		Finalemte con respecto a $ R_{1} $ se escoge un valor de unos pocos $ k \Omega $ con el fin de reducir el efecto ocasionado por las capacitancias parásitas, las cuales provocan oscilaciones de alta frecuencia en el lazo cerrado. 
 
 		Luego los valores diseñados son:
 
@@ -589,7 +595,7 @@
 
 		En donde la constante de tiempo es $\tau = RC$
 
-		Este criterio se dene a que eligiendo un valor muy pequeño de $\tau$ cercano a $1/fp$ existirá un ripple muy pronunciado debido a la rapidez que tendrá el comportamiento dinámico del circuito impediendo la deteccion correcta de la envolvente, por otro lado el valor pequeño de $tau$ producira que el efecto llamado negative peak cliping el cual consiste en que la señal demodulada tiende a redondear y no seguir correctamente a la señal AM será menos significativa.
+		Este criterio se debe a que eligiendo un valor muy pequeño de $\tau$ cercano a $1/fp$ existirá un ripple muy pronunciado debido a la rapidez que tendrá el comportamiento dinámico del circuito impediendo la deteccion correcta de la envolvente, por otro lado el valor pequeño de $tau$ producira que el efecto llamado negative peak cliping el cual consiste en que la señal demodulada tiende a redondear y no seguir correctamente a la señal AM será menos significativa.
 
 		En la siguiente figura se ilustran estos efectos.	
 	
@@ -601,10 +607,9 @@
 		\end{figure}
 
 
-		Por otro lado si escogemos un valor de $tau$ más grande el efecto ripple será menos notorio, pero por otro lado el efecto del negative peak clipping se verá incrementado por lo cual usando las inecuaciones (4) consideraremos componentes con valores tales que la constante de tiempo se encuentre en un equilibrio 
-		para que no exista ni un efecto Ripple pronunciado ni un negative peak clipping pronunciado y obtener una demodulacion bastante correcta de la señal AM.
+		Por otro lado si escogemos un valor de $tau$ más grande el efecto ripple será menos notorio, pero por otro lado el efecto del negative peak clipping se verá incrementado por lo cual usando las inecuaciones (7). Consideraremos componentes con valores tales que la constante de tiempo se encuentre en un equilibrio para que no exista ni un efecto Ripple pronunciado ni un negative peak clipping pronunciado y obtener una demodulacion bastante correcta de la señal AM.
 		
-		Considerando $ f_{m} = 10[kHz] $ y $ f_{c} = 400[kHz] $ resolviendo se tiene:
+		Considerando $ f_{m} = 10$[KHz] y $ f_{c} = 400$[KHz]  resolviendo se tiene:
 
 		\begin{align*}
 			\frac{1}{f_{p}}& \ll \tau \ll  \frac{1}{f_{m}} \\
@@ -634,9 +639,9 @@
 			\label{fig:ejemplo}
 		\end{figure}
 
-		En la figura se observa  que la señal demodulada  se observa cómo se encuentran presentes ambos efectos explicados anteriormente pero ni uno de los es tan imponente como para afectar la finalidad del circuito que es la detección de envolvente. Además se observa menos voltaje en la señal de salida esto se debe a la caída de tensión que existe en el diodo.\\
+		En la Figura se observa que en la señal demodulada se encuentran presentes ambos efectos explicados anteriormente pero ni uno de los es tan imponente como para afectar la finalidad del circuito que es la detección de envolvente. Además se observa menos voltaje en la señal de salida esto se debe a la caída de tensión que existe en el diodo.\\
 		
-		El diodo que se utilizara es el 1N4148 el cual es un con alta velocidad de switching de frecuencia máxima de 250[MHz], por lo cual para nuestra señal AM de 400[kHz] es más que suficiente , NO SEGURO EN ALGUNOS LADOS SALE 100 MEGAS   
+		El diodo que se utiliza es el 1N4148 el cual es de alta velocidad de switching de frecuencia máxima de 250[MHz], por lo cual para nuestra señal AM de 400[kHz] es más que suficiente.
 
 \newpage
 
@@ -648,5 +653,7 @@
 		\item Se destaca la generación de nulos dependiendo del ciclo de trabajo de la señal modulante. Sea BPSK o OOK los espectros de cada señale destacan una relacion en donde $T/\tau=n$
 		\item El calculo de potencias esta directamente relacionado con características espectrales, en donde los criterios tales como -3dB y ancho de banda de primer nulo contienen en gran cantidad de la potencia total de la señal, siendo un buen indicador del ancho de banda efectivo.
 		\item El desfase que pueda existir entre la señal portadora utilizada al modular y la señal portadora utilizada al demodular juega un rol importante ya que si se tienen ciertos valores de desfase se puede demodular de la manera más óptima mientras que para otros valores no se podrá realizar demodulación alguna.
+		\item Al diseñar el circuito desfasador usamos distintos criterios, el primero es diseñar los componentes necesarios (potenciómetro y condensador) para poder abarcar el rango de desfase deseado  y cumplir la finalidad del circuito, por otro lado diseñamos la otra componentes en este caso R1 de tal forma de asegurar el funcionamiento correcto y eliminar efectos negativos como en este caso oscilaciones por capacitancias parásitas.
+		\item Al diseñar el detector de envolvente nos vemos enfrentados a usar criterios en los cuales se nos da un rango de valores para las componentes buscadas, sin embargo  nos vemos obligados a elegir de tal forma que ocurrirán dos efectos negativos siempre uno más que el otro (Velocidad de respuesta y ruido no filtrado), lo cual a pesar de las simulaciones efectuadas se hace difícil saber cuál de estos efectos en la práctica puede ser el más despreciable y cual no lo será. Es por esto que se destaca que a pesar de todo lo que las simulaciones y cálculos nos aportan, es importante entender los problemas prácticos que se generan en el desarrollo experimental.
 	\end{itemize}
 \end{document}

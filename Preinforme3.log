@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  10 JUN 2014 23:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.5.30)  11 JUN 2014 12:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -705,96 +705,96 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 File: img/model3.png Graphic file (type png)
  <use img/model3.png>
 Package pdftex.def Info: img/model3.png used on input line 61.
-(pdftex.def)             Requested size: 377.62642pt x 157.04634pt.
-LaTeX Info: Redefining \. on input line 74.
-LaTeX Info: Redefining \% on input line 74.
+(pdftex.def)             Requested size: 354.02342pt x 147.22993pt.
+LaTeX Info: Redefining \. on input line 80.
+LaTeX Info: Redefining \% on input line 80.
 
 [3 <./img/model3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 80--88
+Underfull \hbox (badness 10000) in paragraph at lines 86--94
 
  []
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 101.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 107.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 101.
-LaTeX Info: Redefining \. on input line 134.
-LaTeX Info: Redefining \% on input line 134.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 107.
+LaTeX Info: Redefining \. on input line 140.
+LaTeX Info: Redefining \% on input line 140.
  [4]
-<img/Senal20_OOK.png, id=37, 421.575pt x 316.18124pt>
+<img/Senal20_OOK.png, id=38, 421.575pt x 316.18124pt>
 File: img/Senal20_OOK.png Graphic file (type png)
 
 <use img/Senal20_OOK.png>
-Package pdftex.def Info: img/Senal20_OOK.png used on input line 139.
+Package pdftex.def Info: img/Senal20_OOK.png used on input line 145.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-<img/Senal25_OOK.png, id=38, 421.575pt x 316.18124pt>
+<img/Senal25_OOK.png, id=39, 421.575pt x 316.18124pt>
 File: img/Senal25_OOK.png Graphic file (type png)
 
 <use img/Senal25_OOK.png>
-Package pdftex.def Info: img/Senal25_OOK.png used on input line 139.
+Package pdftex.def Info: img/Senal25_OOK.png used on input line 145.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-<img/Senal50_OOK.png, id=39, 421.575pt x 316.18124pt>
+<img/Senal50_OOK.png, id=40, 421.575pt x 316.18124pt>
 File: img/Senal50_OOK.png Graphic file (type png)
 
 <use img/Senal50_OOK.png>
-Package pdftex.def Info: img/Senal50_OOK.png used on input line 139.
+Package pdftex.def Info: img/Senal50_OOK.png used on input line 145.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (2.51526pt too wide) in paragraph at lines 139--142
+Overfull \hbox (2.51526pt too wide) in paragraph at lines 145--148
 []  []   []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-<img/Esp_OOK_20.png, id=40, 421.575pt x 316.18124pt>
+<img/Esp_OOK_20.png, id=41, 421.575pt x 316.18124pt>
 File: img/Esp_OOK_20.png Graphic file (type png)
  <use img/Esp_OOK_20.png>
-Package pdftex.def Info: img/Esp_OOK_20.png used on input line 166.
+Package pdftex.def Info: img/Esp_OOK_20.png used on input line 172.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-<img/Esp_OOK_25.png, id=41, 421.575pt x 316.18124pt>
+<img/Esp_OOK_25.png, id=42, 421.575pt x 316.18124pt>
 File: img/Esp_OOK_25.png Graphic file (type png)
  <use img/Esp_OOK_25.png>
-Package pdftex.def Info: img/Esp_OOK_25.png used on input line 166.
+Package pdftex.def Info: img/Esp_OOK_25.png used on input line 172.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-<img/Esp_OOK_50.png, id=42, 421.575pt x 316.18124pt>
+<img/Esp_OOK_50.png, id=43, 421.575pt x 316.18124pt>
 File: img/Esp_OOK_50.png Graphic file (type png)
  <use img/Esp_OOK_50.png>
-Package pdftex.def Info: img/Esp_OOK_50.png used on input line 166.
+Package pdftex.def Info: img/Esp_OOK_50.png used on input line 172.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (8.89604pt too wide) in paragraph at lines 163--167
+Overfull \hbox (8.89604pt too wide) in paragraph at lines 169--173
 []   []   []
  []
 
-LaTeX Info: Redefining \. on input line 167.
-LaTeX Info: Redefining \% on input line 167.
+LaTeX Info: Redefining \. on input line 173.
+LaTeX Info: Redefining \% on input line 173.
 [5 <./img/Senal20_OOK.png (PNG copy)> <./img/Senal25_OOK.png (PNG copy)> <./img
 /Senal50_OOK.png (PNG copy)> <./img/Esp_OOK_20.png (PNG copy)> <./img/Esp_OOK_2
 5.png (PNG copy)> <./img/Esp_OOK_50.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 185.
-LaTeX Info: Redefining \% on input line 185.
+LaTeX Info: Redefining \. on input line 191.
+LaTeX Info: Redefining \% on input line 191.
  [6]
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -803,29 +803,29 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 File: img/Senal20_BPSK.png Graphic file (type png)
 
 <use img/Senal20_BPSK.png>
-Package pdftex.def Info: img/Senal20_BPSK.png used on input line 236.
+Package pdftex.def Info: img/Senal20_BPSK.png used on input line 242.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/Senal25_BPSK.png, id=52, 421.575pt x 316.18124pt>
 File: img/Senal25_BPSK.png Graphic file (type png)
 
 <use img/Senal25_BPSK.png>
-Package pdftex.def Info: img/Senal25_BPSK.png used on input line 236.
+Package pdftex.def Info: img/Senal25_BPSK.png used on input line 242.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/Senal50_BPSK.png, id=53, 421.575pt x 316.18124pt>
 File: img/Senal50_BPSK.png Graphic file (type png)
 
 <use img/Senal50_BPSK.png>
-Package pdftex.def Info: img/Senal50_BPSK.png used on input line 236.
+Package pdftex.def Info: img/Senal50_BPSK.png used on input line 242.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (8.89604pt too wide) in paragraph at lines 233--238
+Overfull \hbox (8.89604pt too wide) in paragraph at lines 239--244
 []   []   []
  []
 
-LaTeX Info: Redefining \. on input line 238.
-LaTeX Info: Redefining \% on input line 238.
+LaTeX Info: Redefining \. on input line 244.
+LaTeX Info: Redefining \% on input line 244.
 [7 <./img/Senal20_BPSK.png (PNG copy)> <./img/Senal25_BPSK.png (PNG copy)> <./i
 mg/Senal50_BPSK.png (PNG copy)>]
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
@@ -835,170 +835,170 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 File: img/Esp1_BPSK_20.png Graphic file (type png)
 
 <use img/Esp1_BPSK_20.png>
-Package pdftex.def Info: img/Esp1_BPSK_20.png used on input line 258.
+Package pdftex.def Info: img/Esp1_BPSK_20.png used on input line 264.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/Esp1_BPSK_25.png, id=58, 421.575pt x 316.18124pt>
 File: img/Esp1_BPSK_25.png Graphic file (type png)
 
 <use img/Esp1_BPSK_25.png>
-Package pdftex.def Info: img/Esp1_BPSK_25.png used on input line 258.
+Package pdftex.def Info: img/Esp1_BPSK_25.png used on input line 264.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/Esp1_BPSK_50.png, id=59, 421.575pt x 316.18124pt>
 File: img/Esp1_BPSK_50.png Graphic file (type png)
 
 <use img/Esp1_BPSK_50.png>
-Package pdftex.def Info: img/Esp1_BPSK_50.png used on input line 258.
+Package pdftex.def Info: img/Esp1_BPSK_50.png used on input line 264.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (8.89604pt too wide) in paragraph at lines 255--260
+Overfull \hbox (8.89604pt too wide) in paragraph at lines 261--266
 []   []   []
  []
 
-LaTeX Info: Redefining \. on input line 277.
-LaTeX Info: Redefining \% on input line 277.
+LaTeX Info: Redefining \. on input line 283.
+LaTeX Info: Redefining \% on input line 283.
 [8 <./img/Esp1_BPSK_20.png (PNG copy)> <./img/Esp1_BPSK_25.png (PNG copy)> <./i
 mg/Esp1_BPSK_50.png (PNG copy)>]
 <img/BW_3db_OOK_20.png, id=63, 421.575pt x 316.18124pt>
 File: img/BW_3db_OOK_20.png Graphic file (type png)
 
 <use img/BW_3db_OOK_20.png>
-Package pdftex.def Info: img/BW_3db_OOK_20.png used on input line 287.
+Package pdftex.def Info: img/BW_3db_OOK_20.png used on input line 293.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_3db_OOK_25.png, id=64, 421.575pt x 316.18124pt>
 File: img/BW_3db_OOK_25.png Graphic file (type png)
 
 <use img/BW_3db_OOK_25.png>
-Package pdftex.def Info: img/BW_3db_OOK_25.png used on input line 287.
+Package pdftex.def Info: img/BW_3db_OOK_25.png used on input line 293.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_3db_OOK_50.png, id=65, 421.575pt x 316.18124pt>
 File: img/BW_3db_OOK_50.png Graphic file (type png)
 
 <use img/BW_3db_OOK_50.png>
-Package pdftex.def Info: img/BW_3db_OOK_50.png used on input line 287.
+Package pdftex.def Info: img/BW_3db_OOK_50.png used on input line 293.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (22.78496pt too wide) in paragraph at lines 284--303
+Overfull \hbox (22.78496pt too wide) in paragraph at lines 290--309
 []   []   []
  []
 
-LaTeX Info: Redefining \. on input line 316.
-LaTeX Info: Redefining \% on input line 316.
+LaTeX Info: Redefining \. on input line 322.
+LaTeX Info: Redefining \% on input line 322.
 [9 <./img/BW_3db_OOK_20.png (PNG copy)> <./img/BW_3db_OOK_25.png (PNG copy)> <.
 /img/BW_3db_OOK_50.png (PNG copy)>]
 <img/BW_3db_BPSK_20.png, id=69, 421.575pt x 316.18124pt>
 File: img/BW_3db_BPSK_20.png Graphic file (type png)
 
 <use img/BW_3db_BPSK_20.png>
-Package pdftex.def Info: img/BW_3db_BPSK_20.png used on input line 322.
+Package pdftex.def Info: img/BW_3db_BPSK_20.png used on input line 328.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_3db_BPSK_25.png, id=70, 421.575pt x 316.18124pt>
 File: img/BW_3db_BPSK_25.png Graphic file (type png)
 
 <use img/BW_3db_BPSK_25.png>
-Package pdftex.def Info: img/BW_3db_BPSK_25.png used on input line 322.
+Package pdftex.def Info: img/BW_3db_BPSK_25.png used on input line 328.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_3db_BPSK_50.png, id=71, 421.575pt x 316.18124pt>
 File: img/BW_3db_BPSK_50.png Graphic file (type png)
 
 <use img/BW_3db_BPSK_50.png>
-Package pdftex.def Info: img/BW_3db_BPSK_50.png used on input line 322.
+Package pdftex.def Info: img/BW_3db_BPSK_50.png used on input line 328.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (22.78496pt too wide) in paragraph at lines 319--323
+Overfull \hbox (22.78496pt too wide) in paragraph at lines 325--329
 []   []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 319--323
+Underfull \hbox (badness 10000) in paragraph at lines 325--329
 
  []
 
-LaTeX Info: Redefining \. on input line 352.
-LaTeX Info: Redefining \% on input line 352.
+LaTeX Info: Redefining \. on input line 358.
+LaTeX Info: Redefining \% on input line 358.
 [10 <./img/BW_3db_BPSK_20.png (PNG copy)> <./img/BW_3db_BPSK_25.png (PNG copy)>
  <./img/BW_3db_BPSK_50.png (PNG copy)>]
 <img/BW_null_OOK_20.png, id=75, 421.575pt x 316.18124pt>
 File: img/BW_null_OOK_20.png Graphic file (type png)
 
 <use img/BW_null_OOK_20.png>
-Package pdftex.def Info: img/BW_null_OOK_20.png used on input line 362.
+Package pdftex.def Info: img/BW_null_OOK_20.png used on input line 368.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_null_OOK_25.png, id=76, 421.575pt x 316.18124pt>
 File: img/BW_null_OOK_25.png Graphic file (type png)
 
 <use img/BW_null_OOK_25.png>
-Package pdftex.def Info: img/BW_null_OOK_25.png used on input line 362.
+Package pdftex.def Info: img/BW_null_OOK_25.png used on input line 368.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_null_OOK_50.png, id=77, 421.575pt x 316.18124pt>
 File: img/BW_null_OOK_50.png Graphic file (type png)
 
 <use img/BW_null_OOK_50.png>
-Package pdftex.def Info: img/BW_null_OOK_50.png used on input line 362.
+Package pdftex.def Info: img/BW_null_OOK_50.png used on input line 368.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (22.78496pt too wide) in paragraph at lines 359--363
+Overfull \hbox (22.78496pt too wide) in paragraph at lines 365--369
 []   []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--363
+Underfull \hbox (badness 10000) in paragraph at lines 365--369
 
  []
 
-LaTeX Info: Redefining \. on input line 398.
-LaTeX Info: Redefining \% on input line 398.
+LaTeX Info: Redefining \. on input line 404.
+LaTeX Info: Redefining \% on input line 404.
 [11 <./img/BW_null_OOK_20.png (PNG copy)> <./img/BW_null_OOK_25.png (PNG copy)>
  <./img/BW_null_OOK_50.png (PNG copy)>]
 <img/BW_null_BPSK_20.png, id=81, 421.575pt x 316.18124pt>
 File: img/BW_null_BPSK_20.png Graphic file (type png)
 
 <use img/BW_null_BPSK_20.png>
-Package pdftex.def Info: img/BW_null_BPSK_20.png used on input line 404.
+Package pdftex.def Info: img/BW_null_BPSK_20.png used on input line 410.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_null_BPSK_25.png, id=82, 421.575pt x 316.18124pt>
 File: img/BW_null_BPSK_25.png Graphic file (type png)
 
 <use img/BW_null_BPSK_25.png>
-Package pdftex.def Info: img/BW_null_BPSK_25.png used on input line 404.
+Package pdftex.def Info: img/BW_null_BPSK_25.png used on input line 410.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
 <img/BW_null_BPSK_50.png, id=83, 421.575pt x 316.18124pt>
 File: img/BW_null_BPSK_50.png Graphic file (type png)
 
 <use img/BW_null_BPSK_50.png>
-Package pdftex.def Info: img/BW_null_BPSK_50.png used on input line 404.
+Package pdftex.def Info: img/BW_null_BPSK_50.png used on input line 410.
 (pdftex.def)             Requested size: 141.61081pt x 106.20721pt.
 
-Overfull \hbox (22.78496pt too wide) in paragraph at lines 401--405
+Overfull \hbox (22.78496pt too wide) in paragraph at lines 407--411
 []   []   []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--405
+Underfull \hbox (badness 10000) in paragraph at lines 407--411
 
  []
 
-LaTeX Info: Redefining \. on input line 440.
-LaTeX Info: Redefining \% on input line 440.
+LaTeX Info: Redefining \. on input line 446.
+LaTeX Info: Redefining \% on input line 446.
 [12 <./img/BW_null_BPSK_20.png (PNG copy)> <./img/BW_null_BPSK_25.png (PNG copy
 )> <./img/BW_null_BPSK_50.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 443--445
+Underfull \hbox (badness 10000) in paragraph at lines 449--451
 
  []
 
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 446.
+(amsmath)                 on input line 452.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -1009,8 +1009,8 @@ File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
-LaTeX Info: Redefining \. on input line 489.
-LaTeX Info: Redefining \% on input line 489.
+LaTeX Info: Redefining \. on input line 495.
+LaTeX Info: Redefining \% on input line 495.
  [13]
 Package epstopdf Info: Source file: <img/preg3_1.eps>
 (epstopdf)                    date: 2014-06-10 21:47:10
@@ -1020,23 +1020,23 @@ Package epstopdf Info: Source file: <img/preg3_1.eps>
 (epstopdf)                    size: 20289 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/preg3_1-eps-converted-
 to.pdf img/preg3_1.eps>
-(epstopdf)             \includegraphics on input line 496.
+(epstopdf)             \includegraphics on input line 502.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/preg3_1-eps-converted-to.pdf, id=91, 832.10875pt x 674.52pt>
 File: img/preg3_1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/preg3_1-eps-converted-to.pdf>
-Package pdftex.def Info: img/preg3_1-eps-converted-to.pdf used on input line 49
-6.
-(pdftex.def)             Requested size: 377.62642pt x 306.10428pt.
+Package pdftex.def Info: img/preg3_1-eps-converted-to.pdf used on input line 50
+2.
+(pdftex.def)             Requested size: 424.82523pt x 344.37117pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 498--499
+Underfull \hbox (badness 10000) in paragraph at lines 504--505
 
  []
 
-LaTeX Info: Redefining \. on input line 501.
-LaTeX Info: Redefining \% on input line 501.
+LaTeX Info: Redefining \. on input line 507.
+LaTeX Info: Redefining \% on input line 507.
 [14 <./img/preg3_1-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/preg3_2.eps>
 (epstopdf)                    date: 2014-06-10 21:55:29
@@ -1046,61 +1046,64 @@ Package epstopdf Info: Source file: <img/preg3_2.eps>
 (epstopdf)                    size: 22644 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/preg3_2-eps-converted-
 to.pdf img/preg3_2.eps>
-(epstopdf)             \includegraphics on input line 506.
+(epstopdf)             \includegraphics on input line 512.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/preg3_2-eps-converted-to.pdf, id=101, 848.16875pt x 606.265pt>
 File: img/preg3_2-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/preg3_2-eps-converted-to.pdf>
-Package pdftex.def Info: img/preg3_2-eps-converted-to.pdf used on input line 50
-6.
-(pdftex.def)             Requested size: 377.62642pt x 269.9212pt.
-LaTeX Info: Redefining \. on input line 509.
-LaTeX Info: Redefining \% on input line 509.
+Package pdftex.def Info: img/preg3_2-eps-converted-to.pdf used on input line 51
+2.
+(pdftex.def)             Requested size: 424.82523pt x 303.65906pt.
+LaTeX Info: Redefining \. on input line 515.
+LaTeX Info: Redefining \% on input line 515.
  [15 <./img/preg3_2-eps-converted-to.pdf>] <circuitdesf.png, id=111, 378.66469p
 t x 144.54pt>
 File: circuitdesf.png Graphic file (type png)
  <use circuitdesf.png>
-Package pdftex.def Info: circuitdesf.png used on input line 516.
+Package pdftex.def Info: circuitdesf.png used on input line 522.
 (pdftex.def)             Requested size: 283.22162pt x 108.10918pt.
-LaTeX Info: Redefining \. on input line 540.
-LaTeX Info: Redefining \% on input line 540.
+LaTeX Info: Redefining \. on input line 560.
+LaTeX Info: Redefining \% on input line 560.
 
 [16 <./circuitdesf.png>]
-LaTeX Info: Redefining \. on input line 580.
-LaTeX Info: Redefining \% on input line 580.
- [17]
-<demodulacion1.png, id=120, 436.63126pt x 276.28218pt>
-File: demodulacion1.png Graphic file (type png)
- <use demodulacion1.png>
-Package pdftex.def Info: demodulacion1.png used on input line 598.
-(pdftex.def)             Requested size: 330.42041pt x 209.07867pt.
-LaTeX Info: Redefining \. on input line 620.
-LaTeX Info: Redefining \% on input line 620.
+Underfull \hbox (badness 10000) in paragraph at lines 574--575
 
-[18 <./demodulacion1.png>]
+ []
+
+LaTeX Info: Redefining \. on input line 586.
+LaTeX Info: Redefining \% on input line 586.
+[17] <demodulacion1.png, id=120, 436.63126pt x 276.28218pt>
+File: demodulacion1.png Graphic file (type png)
+
+<use demodulacion1.png>
+Package pdftex.def Info: demodulacion1.png used on input line 604.
+(pdftex.def)             Requested size: 330.42041pt x 209.07867pt.
+LaTeX Info: Redefining \. on input line 625.
+LaTeX Info: Redefining \% on input line 625.
+ [18 <./demodulacion1.png>]
 <circuitosim.png, id=125, 1025.33063pt x 456.20438pt>
 File: circuitosim.png Graphic file (type png)
  <use circuitosim.png>
-Package pdftex.def Info: circuitosim.png used on input line 625.
+Package pdftex.def Info: circuitosim.png used on input line 630.
 (pdftex.def)             Requested size: 377.62642pt x 168.02028pt.
 
 <graficodemod.png, id=126, 1010.27437pt x 196.48407pt>
 File: graficodemod.png Graphic file (type png)
  <use graficodemod.png>
-Package pdftex.def Info: graficodemod.png used on input line 632.
+Package pdftex.def Info: graficodemod.png used on input line 637.
 (pdftex.def)             Requested size: 377.62642pt x 73.44449pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 637--638
+Underfull \hbox (badness 10000) in paragraph at lines 642--643
 
  []
 
-LaTeX Info: Redefining \. on input line 641.
-LaTeX Info: Redefining \% on input line 641.
+LaTeX Info: Redefining \. on input line 646.
+LaTeX Info: Redefining \% on input line 646.
 [19 <./circuitosim.png> <./graficodemod.png>]
-LaTeX Info: Redefining \. on input line 650.
-LaTeX Info: Redefining \% on input line 650.
+LaTeX Info: Redefining \. on input line 659.
+LaTeX Info: Redefining \% on input line 659.
  [20] (./Preinforme3.aux
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
@@ -1119,7 +1122,7 @@ Here is how much of TeX's memory you used:
  9431 multiletter control sequences out of 15000+600000
  15211 words of font info for 61 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 38i,14n,45p,585b,2252s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,14n,45p,704b,2252s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -1135,7 +1138,7 @@ live/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texl
 ive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
 /2013/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on Preinforme3.pdf (21 pages, 758641 bytes).
+Output written on Preinforme3.pdf (21 pages, 759185 bytes).
 PDF statistics:
  182 PDF objects out of 1000 (max. 8388607)
  106 compressed objects within 2 object streams
